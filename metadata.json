@@ -1,0 +1,6 @@
+{
+  "name": "Prakriti Expert System",
+  "description": "An Indian Knowledge Systems (IKS) and Computer Science expert system application classifying Ayurvedic Prakriti through deterministic IF-THEN rules and explainable inference.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

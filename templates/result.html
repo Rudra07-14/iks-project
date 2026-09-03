@@ -1,0 +1,240 @@
+{% extends "base.html" %}
+
+{% block title %}Prakriti Assessment Result | Dominant Dosha: {{ result.dominant_dosha }}{% endblock %}
+
+{% block content %}
+<section class="py-12 md:py-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+
+        <!-- Top Status Banner -->
+        <div class="bg-emerald-50 border border-emerald-200 text-emerald-800 rounded-xl p-3 text-xs flex items-center justify-between mb-8">
+            <div class="flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+                <span><strong>Inference Complete:</strong> All 8 responses were successfully evaluated by the production rules.</span>
+            </div>
+            <span class="font-mono text-[11px] text-emerald-700">O(8) Forward Chaining</span>
+        </div>
+
+        <!-- MAIN RESULT CARD -->
+        <div class="bg-white rounded-3xl p-8 sm:p-12 border border-[#E3DDD1] shadow-md mb-10 text-center relative overflow-hidden">
+            <!-- Dosha Highlight Accent Bar -->
+            {% if result.dominant_dosha == 'Vata' %}
+            <div class="h-2 w-full bg-blue-500 absolute top-0 left-0"></div>
+            {% elif result.dominant_dosha == 'Pitta' %}
+            <div class="h-2 w-full bg-amber-500 absolute top-0 left-0"></div>
+            {% else %}
+            <div class="h-2 w-full bg-emerald-600 absolute top-0 left-0"></div>
+            {% endif %}
+
+            <div class="inline-block text-xs font-bold uppercase tracking-widest text-[#7D7870] mb-2">
+                Inference Result · Dominant Classification
+            </div>
+
+            <!-- Sanskrit + English Dominant Dosha -->
+            <div class="font-serif text-5xl sm:text-6xl font-bold tracking-tight text-[#1E2D24] mb-3">
+                {{ result.dominant_dosha }}
+                <span class="text-3xl sm:text-4xl text-[#C88A2E] font-normal ml-1">({{ result.dominant_details.sanskrit }})</span>
+            </div>
+
+            <p class="text-base sm:text-lg text-[#55524C] max-w-xl mx-auto mb-6 leading-relaxed">
+                {{ result.dominant_details.summary }}
+            </p>
+
+            <div class="inline-flex flex-wrap items-center justify-center gap-3 text-xs">
+                <span class="px-3 py-1 rounded-full bg-[#EDE7DA] border border-[#DDD5C5] text-[#47443E]">
+                    <strong>Elements:</strong> {{ result.dominant_details.elements }}
+                </span>
+                <span class="px-3 py-1 rounded-full bg-[#EDE7DA] border border-[#DDD5C5] text-[#47443E]">
+                    <strong>Attributes:</strong> {{ result.dominant_details.core_attributes }}
+                </span>
+            </div>
+
+            {% if result.is_tie %}
+            <div class="mt-6 p-4 rounded-xl bg-amber-50 border border-amber-200 text-amber-800 text-xs text-left max-w-lg mx-auto">
+                <strong>Deterministic Tie Resolution:</strong> Multiple Doshas achieved the highest score ({{ result.tied_doshas|join(', ') }}). Following the academic project specification, the deterministic evaluation selected <strong>{{ result.dominant_dosha }}</strong> via the standard priority rule (Vata &gt; Pitta &gt; Kapha).
+            </div>
+            {% endif %}
+        </div>
+
+        <!-- SECTION: SCORE VISUALIZATION -->
+        <div class="bg-white rounded-2xl p-6 sm:p-8 border border-[#E3DDD1] shadow-sm mb-10">
+            <h2 class="font-serif text-2xl font-bold text-[#1E2D24] mb-1">
+                Your Rule-Based Scores
+            </h2>
+            <p class="text-xs text-[#6E6A63] mb-8">
+                Each input characteristic triggered an IF-THEN rule, contributing +1 to its associated category. Total: 8 points.
+            </p>
+
+            <!-- Score Bars -->
+            <div class="space-y-6">
+                <!-- Vata -->
+                <div>
+                    <div class="flex items-center justify-between text-sm font-semibold mb-2">
+                        <span class="flex items-center gap-2 text-blue-900">
+                            <span class="w-3 h-3 rounded-full bg-blue-500 inline-block"></span>
+                            Vata (वात)
+                        </span>
+                        <span class="font-mono text-xs text-[#524E48]">
+                            {{ result.scores.Vata }} / 8 rules fired ({{ result.percentages.Vata }}%)
+                        </span>
+                    </div>
+                    <div class="w-full bg-[#F0EBE1] h-3.5 rounded-full overflow-hidden">
+                        <div class="bg-blue-500 h-full rounded-full transition-all duration-700" style="width: {{ result.percentages.Vata }}%;"></div>
+                    </div>
+                </div>
+
+                <!-- Pitta -->
+                <div>
+                    <div class="flex items-center justify-between text-sm font-semibold mb-2">
+                        <span class="flex items-center gap-2 text-amber-900">
+                            <span class="w-3 h-3 rounded-full bg-amber-500 inline-block"></span>
+                            Pitta (पित्त)
+                        </span>
+                        <span class="font-mono text-xs text-[#524E48]">
+                            {{ result.scores.Pitta }} / 8 rules fired ({{ result.percentages.Pitta }}%)
+                        </span>
+                    </div>
+                    <div class="w-full bg-[#F0EBE1] h-3.5 rounded-full overflow-hidden">
+                        <div class="bg-amber-500 h-full rounded-full transition-all duration-700" style="width: {{ result.percentages.Pitta }}%;"></div>
+                    </div>
+                </div>
+
+                <!-- Kapha -->
+                <div>
+                    <div class="flex items-center justify-between text-sm font-semibold mb-2">
+                        <span class="flex items-center gap-2 text-emerald-900">
+                            <span class="w-3 h-3 rounded-full bg-emerald-600 inline-block"></span>
+                            Kapha (कफ)
+                        </span>
+                        <span class="font-mono text-xs text-[#524E48]">
+                            {{ result.scores.Kapha }} / 8 rules fired ({{ result.percentages.Kapha }}%)
+                        </span>
+                    </div>
+                    <div class="w-full bg-[#F0EBE1] h-3.5 rounded-full overflow-hidden">
+                        <div class="bg-emerald-600 h-full rounded-full transition-all duration-700" style="width: {{ result.percentages.Kapha }}%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Score Summary Cards -->
+            <div class="grid grid-cols-3 gap-4 mt-8 pt-6 border-t border-[#F0EAE0] text-center">
+                <div class="p-3 rounded-xl bg-blue-50/60 border border-blue-100">
+                    <div class="text-[11px] uppercase font-bold text-blue-800">Vata Score</div>
+                    <div class="font-serif text-2xl font-bold text-blue-900">{{ result.scores.Vata }}</div>
+                </div>
+                <div class="p-3 rounded-xl bg-amber-50/60 border border-amber-100">
+                    <div class="text-[11px] uppercase font-bold text-amber-800">Pitta Score</div>
+                    <div class="font-serif text-2xl font-bold text-amber-900">{{ result.scores.Pitta }}</div>
+                </div>
+                <div class="p-3 rounded-xl bg-emerald-50/60 border border-emerald-100">
+                    <div class="text-[11px] uppercase font-bold text-emerald-800">Kapha Score</div>
+                    <div class="font-serif text-2xl font-bold text-emerald-900">{{ result.scores.Kapha }}</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION: EXPLANATION TIMELINE -->
+        <div class="bg-white rounded-2xl p-6 sm:p-8 border border-[#E3DDD1] shadow-sm mb-10">
+            <div class="flex items-center justify-between mb-6">
+                <div>
+                    <h2 class="font-serif text-2xl font-bold text-[#1E2D24]">
+                        Inference Process & Rule Execution Trace
+                    </h2>
+                    <p class="text-xs text-[#6E6A63] mt-1">
+                        How the forward-chaining engine evaluated your 8 facts step-by-step.
+                    </p>
+                </div>
+                <span class="text-xs font-mono bg-[#EAE4D8] px-2.5 py-1 rounded text-[#4A4742]">
+                    Explainable AI
+                </span>
+            </div>
+
+            <div class="space-y-4">
+                {% for trace in result.explanations %}
+                <div class="p-4 rounded-xl border border-[#EAE4D9] bg-[#FAF8F5] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                    <div class="flex items-start gap-3">
+                        <span class="w-7 h-7 rounded-lg bg-[#EAE3D5] text-[#33312D] text-xs font-bold font-mono flex items-center justify-center flex-shrink-0 mt-0.5">
+                            0{{ trace.step }}
+                        </span>
+                        <div>
+                            <div class="text-xs font-semibold text-[#1E2D24] flex items-center gap-2">
+                                <span>{{ trace.category }}</span>
+                                <span class="text-[10px] px-1.5 py-0.5 rounded {% if trace.dosha == 'Vata' %}bg-blue-100 text-blue-800{% elif trace.dosha == 'Pitta' %}bg-amber-100 text-amber-800{% else %}bg-emerald-100 text-emerald-800{% endif %} font-mono">
+                                    {{ trace.dosha }} Rule Matched
+                                </span>
+                            </div>
+                            <div class="text-xs text-[#69655E] mt-0.5">
+                                "{{ trace.selected_fact }}"
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-right flex-shrink-0 text-xs font-mono font-semibold text-[#1E2D24]">
+                        {{ trace.dosha }} +1 <span class="text-[11px] text-[#8C877F]">({{ trace.prev_score }} → {{ trace.new_score }})</span>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- SECTION: INTERACTIVE RULE INSPECTOR -->
+        <div class="bg-white rounded-2xl p-6 sm:p-8 border border-[#E3DDD1] shadow-sm mb-10">
+            <details class="group">
+                <summary class="flex items-center justify-between cursor-pointer list-none">
+                    <div>
+                        <h3 class="font-serif text-xl font-bold text-[#1E2D24] inline-flex items-center gap-2">
+                            <span>🔍 Deep Rule Inspector</span>
+                            <span class="text-xs font-sans font-normal text-[#8A857C]">(Click to expand full production rule syntax)</span>
+                        </h3>
+                        <p class="text-xs text-[#6E6A63] mt-1">
+                            Inspect the formal IF-THEN rules, premises, and classical Ayurvedic rationales that fired during inference.
+                        </p>
+                    </div>
+                    <span class="text-sm font-bold text-[#6E6A63] transition-transform group-open:rotate-180">▼</span>
+                </summary>
+
+                <div class="mt-6 pt-6 border-t border-[#EFE9DF] space-y-4">
+                    {% for trace in result.explanations %}
+                    <div class="p-4 rounded-xl bg-[#F6F2EC] border border-[#E2DDD2] text-xs font-mono space-y-1.5">
+                        <div class="flex items-center justify-between text-[#1E2D24] font-bold">
+                            <span>RULE {{ trace.step }}: {{ trace.category|upper }}</span>
+                            <span class="text-[11px] {% if trace.dosha == 'Vata' %}text-blue-700{% elif trace.dosha == 'Pitta' %}text-amber-700{% else %}text-emerald-700{% endif %}">
+                                FIRED → {{ trace.dosha|upper }}
+                            </span>
+                        </div>
+                        <div class="text-[#4F4C47] font-sans"><strong>Fact:</strong> {{ trace.selected_fact }}</div>
+                        <div class="bg-white p-2.5 rounded-lg border border-[#E0D8CB] space-y-1">
+                            <div><strong class="text-indigo-700">IF:</strong> {{ trace.rule_if }}</div>
+                            <div><strong class="text-emerald-700">THEN:</strong> {{ trace.rule_then }} (Score: {{ trace.prev_score }} → {{ trace.new_score }})</div>
+                        </div>
+                        <div class="text-[#69655E] italic font-sans">
+                            <strong>Reason:</strong> {{ trace.reason }}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </details>
+        </div>
+
+        <!-- ACTION BUTTONS -->
+        <div class="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-[#EAE4D9]">
+            <a href="{{ url_for('assessment') }}" class="px-6 py-3 rounded-xl bg-[#1E2D24] text-white text-sm font-semibold hover:bg-[#2D4235] transition-colors shadow-sm">
+                ↺ Restart Assessment
+            </a>
+            <div class="flex items-center gap-3">
+                <button onclick="window.print()" class="px-5 py-3 rounded-xl bg-[#EDE7DA] text-[#3A3732] text-sm font-semibold hover:bg-[#E0D8C8] transition-colors border border-[#DCD4C3]">
+                    🖨 Print / Save Result
+                </button>
+                <a href="{{ url_for('how_it_works') }}" class="px-5 py-3 rounded-xl bg-[#EDE7DA] text-[#3A3732] text-sm font-semibold hover:bg-[#E0D8C8] transition-colors border border-[#DCD4C3]">
+                    Learn How Engine Works →
+                </a>
+            </div>
+        </div>
+
+        <!-- Educational Disclaimer -->
+        <div class="mt-10 p-5 rounded-2xl bg-[#F2EDE4] border border-[#E0D8CC] text-xs text-[#6B665F] leading-relaxed">
+            <strong class="text-[#201F1E]">Educational Project Disclaimer:</strong> This application is an educational demonstration of Ayurvedic Prakriti classification implemented as a rule-based expert system. It is not a medical diagnostic tool and does not provide medical treatment, medicine recommendations, or professional Ayurvedic consultation.
+        </div>
+
+    </div>
+</section>
+{% endblock %}

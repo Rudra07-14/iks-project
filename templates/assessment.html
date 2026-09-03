@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+
+{% block title %}Prakriti Assessment | 8-Question Rule-Based Evaluation{% endblock %}
+
+{% block content %}
+<section class="py-12 md:py-16">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+
+        <!-- Header -->
+        <div class="mb-8 text-center">
+            <span class="text-xs font-bold uppercase tracking-widest text-[#7D7870]">Input Collection Step</span>
+            <h1 class="font-serif text-3xl sm:text-4xl font-bold text-[#1E2D24] mt-1 mb-2">
+                Prakriti Assessment
+            </h1>
+            <p class="text-sm text-[#615D57]">
+                Answer all 8 characteristic inquiries. Each selection forms an input fact matched against the expert knowledge base.
+            </p>
+        </div>
+
+        <!-- Progress Indicator -->
+        <div class="bg-white rounded-2xl p-4 sm:p-6 border border-[#E3DDD1] shadow-sm mb-6">
+            <div class="flex items-center justify-between text-xs font-semibold text-[#54514B] mb-2">
+                <span id="question-indicator">Question 1 of 8</span>
+                <span id="progress-percentage">12% Completed</span>
+            </div>
+            <div class="w-full bg-[#EFE9DF] h-2.5 rounded-full overflow-hidden">
+                <div id="progress-bar-fill" class="bg-[#1E2D24] h-full transition-all duration-300 ease-out" style="width: 12.5%;"></div>
+            </div>
+        </div>
+
+        <!-- Assessment Form -->
+        <form id="assessment-form" method="POST" action="{{ url_for('assessment') }}">
+            
+            <!-- Question Cards Container -->
+            <div id="questions-container" class="space-y-6">
+                {% for qid, q in questions_data.items() %}
+                <div class="question-step bg-white rounded-2xl p-6 sm:p-8 border border-[#E3DDD1] shadow-sm transition-all {% if not loop.first %}hidden{% endif %}" data-step="{{ loop.index }}" data-qid="{{ qid }}">
+                    <div class="flex items-center justify-between gap-2 mb-3">
+                        <span class="text-xs font-bold uppercase tracking-wider text-[#918C83]">
+                            Category: {{ q.category }}
+                        </span>
+                        <span class="text-xs font-mono text-[#A8A39B]">Fact Assertion #{{ loop.index }}</span>
+                    </div>
+
+                    <h2 class="font-serif text-xl sm:text-2xl font-bold text-[#1E2D24] mb-6">
+                        {{ q.title }}
+                    </h2>
+
+                    <!-- 3 Options (Vata, Pitta, Kapha) -->
+                    <div class="space-y-3">
+                        {% for opt_key, opt_text in q.options.items() %}
+                        <label class="option-card flex items-start gap-4 p-4 sm:p-5 rounded-xl border border-[#E5DFD4] cursor-pointer hover:border-[#1E2D24] hover:bg-[#FAF8F5] transition-all relative select-none">
+                            <input type="radio" name="{{ qid }}" value="{{ opt_key }}" class="mt-1 text-[#1E2D24] focus:ring-[#1E2D24] h-4 w-4 border-[#C8C2B7]" required>
+                            <div class="flex-grow">
+                                <div class="text-sm font-medium text-[#201F1E] leading-snug">{{ opt_text }}</div>
+                                <div class="text-[11px] text-[#8C877E] mt-1 font-mono uppercase tracking-wider">
+                                    Corresponds to {{ opt_key|capitalize }} characteristic rule
+                                </div>
+                            </div>
+                        </label>
+                        {% endfor %}
+                    </div>
+
+                    <!-- Step Navigation Buttons -->
+                    <div class="flex items-center justify-between mt-8 pt-6 border-t border-[#F0EAE0]">
+                        {% if not loop.first %}
+                        <button type="button" class="prev-step-btn px-5 py-2.5 text-sm font-semibold rounded-xl bg-[#EDE7DA] text-[#3D3A35] hover:bg-[#E0D8C8] transition-colors">
+                            ← Previous
+                        </button>
+                        {% else %}
+                        <div></div>
+                        {% endif %}
+
+                        {% if not loop.last %}
+                        <button type="button" class="next-step-btn px-6 py-2.5 text-sm font-semibold rounded-xl bg-[#1E2D24] text-white hover:bg-[#2B3E32] transition-colors">
+                            Next Question →
+                        </button>
+                        {% else %}
+                        <button type="submit" id="submit-assessment-btn" class="px-7 py-3 text-sm font-semibold rounded-xl bg-[#C88A2E] text-white hover:bg-[#B37923] shadow-md transition-all font-sans">
+                            Run Inference & View Result →
+                        </button>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            <!-- Validation Error Toast -->
+            <div id="client-error-box" class="hidden mt-4 p-4 rounded-xl bg-red-50 border border-red-200 text-red-800 text-xs font-medium">
+                Please select an answer to proceed to the next question.
+            </div>
+        </form>
+
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/assessment.js') }}"></script>
+{% endblock %}

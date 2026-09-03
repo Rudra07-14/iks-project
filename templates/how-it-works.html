@@ -1,0 +1,174 @@
+{% extends "base.html" %}
+
+{% block title %}How the Expert System Works | Ayurvedic Rule-Based Inference{% endblock %}
+
+{% block content %}
+<section class="py-12 md:py-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+
+        <!-- Header -->
+        <div class="text-center mb-14">
+            <span class="text-xs font-bold uppercase tracking-widest text-[#7D7870]">Technical Architecture</span>
+            <h1 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1E2D24] mt-2 mb-4">
+                How the Expert System Works
+            </h1>
+            <p class="text-base text-[#615D57] max-w-2xl mx-auto leading-relaxed">
+                An end-to-end breakdown of how traditional Ayurvedic characteristics are translated into input facts, processed through a production rule base, and synthesized into an explainable classification.
+            </p>
+        </div>
+
+        <!-- 8-Step Forward-Chaining Pipeline -->
+        <div class="bg-white rounded-3xl p-8 sm:p-10 border border-[#E3DDD1] shadow-sm mb-12">
+            <h2 class="font-serif text-2xl font-bold text-[#1E2D24] mb-8">
+                The 8-Stage Inference Lifecycle
+            </h2>
+
+            <div class="space-y-6">
+                <!-- Step 1 -->
+                <div class="flex items-start gap-4 p-4 rounded-xl bg-[#FAF8F5] border border-[#EAE4D9]">
+                    <span class="w-8 h-8 rounded-lg bg-[#1E2D24] text-white text-xs font-bold font-mono flex items-center justify-center flex-shrink-0">1</span>
+                    <div>
+                        <h3 class="font-serif text-base font-bold text-[#1E2D24]">Step 1 — User Input</h3>
+                        <p class="text-xs text-[#5C5954] mt-1 leading-relaxed">
+                            The user completes the 8-question assessment covering somatic, metabolic, physiological, and behavioral dimensions.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="flex items-start gap-4 p-4 rounded-xl bg-[#FAF8F5] border border-[#EAE4D9]">
+                    <span class="w-8 h-8 rounded-lg bg-[#1E2D24] text-white text-xs font-bold font-mono flex items-center justify-center flex-shrink-0">2</span>
+                    <div>
+                        <h3 class="font-serif text-base font-bold text-[#1E2D24]">Step 2 — Fact Assertion</h3>
+                        <p class="text-xs text-[#5C5954] mt-1 leading-relaxed">
+                            Each user selection is formalized as an asserted input fact in the expert system’s working memory (e.g., <code>FACT: Frame = "Light and thin"</code>).
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="flex items-start gap-4 p-4 rounded-xl bg-[#FAF8F5] border border-[#EAE4D9]">
+                    <span class="w-8 h-8 rounded-lg bg-[#1E2D24] text-white text-xs font-bold font-mono flex items-center justify-center flex-shrink-0">3</span>
+                    <div>
+                        <h3 class="font-serif text-base font-bold text-[#1E2D24]">Step 3 — Knowledge Base Access</h3>
+                        <p class="text-xs text-[#5C5954] mt-1 leading-relaxed">
+                            The system accesses the predefined knowledge base (<code>rules.py</code>), which contains codifications of classical Charaka and Sushruta Samhita principles.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="flex items-start gap-4 p-4 rounded-xl bg-[#FAF8F5] border border-[#EAE4D9]">
+                    <span class="w-8 h-8 rounded-lg bg-[#1E2D24] text-white text-xs font-bold font-mono flex items-center justify-center flex-shrink-0">4</span>
+                    <div>
+                        <h3 class="font-serif text-base font-bold text-[#1E2D24]">Step 4 — Rule Evaluation</h3>
+                        <p class="text-xs text-[#5C5954] mt-1 leading-relaxed">
+                            The inference engine pattern-matches the asserted fact against the premise of candidate IF-THEN rules (forward-chaining evaluation).
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Step 5 -->
+                <div class="flex items-start gap-4 p-4 rounded-xl bg-[#FAF8F5] border border-[#EAE4D9]">
+                    <span class="w-8 h-8 rounded-lg bg-[#1E2D24] text-white text-xs font-bold font-mono flex items-center justify-center flex-shrink-0">5</span>
+                    <div>
+                        <h3 class="font-serif text-base font-bold text-[#1E2D24]">Step 5 — Score Assignment</h3>
+                        <p class="text-xs text-[#5C5954] mt-1 leading-relaxed">
+                            When a rule’s condition evaluates to true, the rule fires and executes its consequent action: incrementing the targeted Dosha score by <code>+1</code>.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Step 6 -->
+                <div class="flex items-start gap-4 p-4 rounded-xl bg-[#FAF8F5] border border-[#EAE4D9]">
+                    <span class="w-8 h-8 rounded-lg bg-[#1E2D24] text-white text-xs font-bold font-mono flex items-center justify-center flex-shrink-0">6</span>
+                    <div>
+                        <h3 class="font-serif text-base font-bold text-[#1E2D24]">Step 6 — Final Inference</h3>
+                        <p class="text-xs text-[#5C5954] mt-1 leading-relaxed">
+                            After processing all 8 queries, the inference engine compares the aggregated working memory totals for Vata, Pitta, and Kapha.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Step 7 -->
+                <div class="flex items-start gap-4 p-4 rounded-xl bg-[#FAF8F5] border border-[#EAE4D9]">
+                    <span class="w-8 h-8 rounded-lg bg-[#1E2D24] text-white text-xs font-bold font-mono flex items-center justify-center flex-shrink-0">7</span>
+                    <div>
+                        <h3 class="font-serif text-base font-bold text-[#1E2D24]">Step 7 — Classification</h3>
+                        <p class="text-xs text-[#5C5954] mt-1 leading-relaxed">
+                            The highest-scoring Dosha is declared as the dominant constitutional classification (resolved via deterministic priority in the event of equal scores).
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Step 8 -->
+                <div class="flex items-start gap-4 p-4 rounded-xl bg-[#1E2D24] text-white">
+                    <span class="w-8 h-8 rounded-lg bg-[#2F4437] text-[#FAF8F5] text-xs font-bold font-mono flex items-center justify-center flex-shrink-0">8</span>
+                    <div>
+                        <h3 class="font-serif text-base font-bold text-white">Step 8 — Explainable Reasoning Trace</h3>
+                        <p class="text-xs text-[#C5BFB5] mt-1 leading-relaxed">
+                            Unlike opaque statistical neural networks, the system displays the full audit trail: which specific rules fired, why they fired, and how each answer impacted the score.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section: Visual Conceptual Hierarchy -->
+        <div class="bg-[#F4EFEA] rounded-3xl p-8 sm:p-10 border border-[#E2DDD2] mb-12">
+            <h2 class="font-serif text-2xl font-bold text-[#1E2D24] mb-4 text-center">
+                Conceptual Flow: From Ancient Philosophy to Execution
+            </h2>
+            <p class="text-xs text-[#6B665F] text-center max-w-lg mx-auto mb-8">
+                How centuries of Indian Knowledge Systems translate into a modern formal logic system.
+            </p>
+
+            <div class="flex flex-col items-center space-y-2 text-xs font-semibold">
+                <div class="px-5 py-2.5 rounded-xl bg-white border border-[#DCD5C6] shadow-sm text-[#1E2D24] text-center w-64">
+                    IKS Concept (Indian Knowledge Systems)
+                </div>
+                <div class="text-[#A39E94]">↓</div>
+                <div class="px-5 py-2.5 rounded-xl bg-white border border-[#DCD5C6] shadow-sm text-[#1E2D24] text-center w-64">
+                    Ayurveda (Traditional Medicine & Science)
+                </div>
+                <div class="text-[#A39E94]">↓</div>
+                <div class="px-5 py-2.5 rounded-xl bg-white border border-[#DCD5C6] shadow-sm text-[#1E2D24] text-center w-64">
+                    Prakriti (Constitutional Classification)
+                </div>
+                <div class="text-[#A39E94]">↓</div>
+                <div class="px-5 py-2.5 rounded-xl bg-white border border-[#DCD5C6] shadow-sm text-[#1E2D24] text-center w-64">
+                    Three Biological Energies (Tridosha)
+                </div>
+                <div class="text-[#A39E94]">↓</div>
+                <div class="px-5 py-2.5 rounded-xl bg-white border border-[#DCD5C6] shadow-sm text-[#1E2D24] text-center w-64">
+                    Observed Characteristics (Lakshanas)
+                </div>
+                <div class="text-[#A39E94]">↓</div>
+                <div class="px-5 py-2.5 rounded-xl bg-[#EDE7DA] border border-[#CFC7B7] text-[#1E2D24] text-center w-64 font-mono">
+                    Computational Input Facts
+                </div>
+                <div class="text-[#A39E94]">↓</div>
+                <div class="px-5 py-2.5 rounded-xl bg-[#EDE7DA] border border-[#CFC7B7] text-[#1E2D24] text-center w-64 font-mono">
+                    IF-THEN Production Rules
+                </div>
+                <div class="text-[#A39E94]">↓</div>
+                <div class="px-5 py-2.5 rounded-xl bg-[#EDE7DA] border border-[#CFC7B7] text-[#1E2D24] text-center w-64 font-mono">
+                    Forward-Chaining Inference Engine
+                </div>
+                <div class="text-[#A39E94]">↓</div>
+                <div class="px-5 py-2.5 rounded-xl bg-[#1E2D24] text-white shadow-md text-center w-64 font-mono">
+                    Dominant Dosha Classification
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="text-center pt-4">
+            <a href="{{ url_for('assessment') }}" class="inline-flex items-center justify-center px-8 py-4 text-sm font-semibold rounded-xl bg-[#1E2D24] text-white hover:bg-[#2F4437] transition-colors shadow-md">
+                Try the Assessment & Observe the Rules →
+            </a>
+        </div>
+
+    </div>
+</section>
+{% endblock %}

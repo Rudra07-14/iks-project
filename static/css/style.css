@@ -1,0 +1,45 @@
+/* 
+ * Ayurvedic Prakriti Expert System Stylesheet
+ * Minimal editorial design, Indian heritage aesthetic, refined typography
+ */
+
+@media print {
+    aside, header, footer, .prev-step-btn, .next-step-btn, a[href*="assessment"] {
+        display: none !important;
+    }
+    body {
+        background-color: #ffffff !important;
+        color: #000000 !important;
+    }
+    .shadow-sm, .shadow-md, .shadow-xl {
+        box-shadow: none !important;
+    }
+    .border {
+        border-color: #d1d5db !important;
+    }
+}
+
+/* Smooth focus visible states */
+:focus-visible {
+    outline: 2px solid #1E2D24;
+    outline-offset: 2px;
+}
+
+/* Custom card active state */
+.option-card input[type="radio"]:checked ~ div .font-medium {
+    color: #1E2D24;
+    font-weight: 600;
+}
+
+.option-card:has(input[type="radio"]:checked) {
+    border-color: #1E2D24;
+    background-color: #FAF6EE;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+}
+
+/* Smooth transitions */
+.transition-all {
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 200ms;
+}

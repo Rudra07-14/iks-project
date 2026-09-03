@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+
+{% block title %}About the Project | IKS × Computer Science Expert System{% endblock %}
+
+{% block content %}
+<section class="py-12 md:py-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+
+        <!-- Header -->
+        <div class="mb-12">
+            <span class="text-xs font-bold uppercase tracking-widest text-[#7D7870]">Collegiate Project Documentation</span>
+            <h1 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1E2D24] mt-2 mb-4">
+                Ayurvedic Classification as a Rule-Based Expert System
+            </h1>
+            <p class="text-base text-[#615D57] leading-relaxed">
+                An academic interdisciplinary demonstration synthesizing Indian Knowledge Systems (IKS) with foundational Artificial Intelligence and production rule inference.
+            </p>
+        </div>
+
+        <!-- Academic Context Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+            <div class="p-6 rounded-2xl bg-white border border-[#E3DDD1] shadow-sm">
+                <span class="text-xs font-mono font-semibold text-[#C88A2E] uppercase">Part 1: The Domain</span>
+                <h2 class="font-serif text-xl font-bold text-[#1E2D24] mt-1 mb-3">Indian Knowledge Systems (IKS)</h2>
+                <p class="text-xs text-[#59554F] leading-relaxed">
+                    Ayurveda, formalized in classical treatises such as the <em>Charaka Samhita</em> and <em>Sushruta Samhita</em>, provides an empirical framework for categorizing human constitution (Prakriti). Individual variance is understood through combinations of three energetic principles: Vata, Pitta, and Kapha.
+                </p>
+            </div>
+
+            <div class="p-6 rounded-2xl bg-white border border-[#E3DDD1] shadow-sm">
+                <span class="text-xs font-mono font-semibold text-indigo-700 uppercase">Part 2: The Computation</span>
+                <h2 class="font-serif text-xl font-bold text-[#1E2D24] mt-1 mb-3">Rule-Based Expert Systems</h2>
+                <p class="text-xs text-[#59554F] leading-relaxed">
+                    In classic AI, expert systems represent domain knowledge as structured <code>IF &lt;condition&gt; THEN &lt;action&gt;</code> rules. They process asserted user facts through an inference engine to deduce conclusions with full explainability and mathematical determinism.
+                </p>
+            </div>
+        </div>
+
+        <!-- Algorithmic Complexity Section -->
+        <div class="bg-white rounded-2xl p-6 sm:p-8 border border-[#E3DDD1] shadow-sm mb-12">
+            <h2 class="font-serif text-2xl font-bold text-[#1E2D24] mb-4">
+                Computational Complexity & Inference Algorithm
+            </h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+                <div class="p-4 rounded-xl bg-[#FAF8F5] border border-[#EAE4D9]">
+                    <div class="text-xs font-mono text-[#7D7870]">Time Complexity</div>
+                    <div class="font-serif text-2xl font-bold text-[#1E2D24] mt-1">O(n)</div>
+                    <p class="text-xs text-[#6B665F] mt-1">
+                        Where <code>n = 8</code> (number of questions). Each fact is looked up in the hash-based rule dictionary in constant O(1) time.
+                    </p>
+                </div>
+                <div class="p-4 rounded-xl bg-[#FAF8F5] border border-[#EAE4D9]">
+                    <div class="text-xs font-mono text-[#7D7870]">Space Complexity</div>
+                    <div class="font-serif text-2xl font-bold text-[#1E2D24] mt-1">O(n)</div>
+                    <p class="text-xs text-[#6B665F] mt-1">
+                        Linear space to store working memory scores (3 counters) and <code>n</code> explanation audit records in memory.
+                    </p>
+                </div>
+            </div>
+
+            <h3 class="font-serif text-lg font-bold text-[#1E2D24] mb-2">Deterministic Tie Handling</h3>
+            <p class="text-xs text-[#59554F] leading-relaxed mb-4">
+                In the event that two or three Doshas obtain identical aggregate scores (for example, 4 Vata and 4 Pitta), the academic algorithm applies a deterministic tie-breaker based on dictionary precedence order:
+            </p>
+            <div class="p-3.5 rounded-xl bg-[#F4EFEA] border border-[#E2DDD2] font-mono text-xs text-[#2E2C29]">
+                Precedence Resolution: Vata (वात) &gt; Pitta (पित्त) &gt; Kapha (कफ)
+            </div>
+        </div>
+
+        <!-- Assumptions & Academic Limitations -->
+        <div class="bg-white rounded-2xl p-6 sm:p-8 border border-[#E3DDD1] shadow-sm mb-12">
+            <h2 class="font-serif text-2xl font-bold text-[#1E2D24] mb-4">
+                Assumptions and Scope Limitations
+            </h2>
+            <ul class="space-y-3 text-xs text-[#59554F] list-disc list-inside leading-relaxed">
+                <li><strong>Predefined Static Knowledge Base:</strong> All rules are manually codified from educational Ayurvedic references and remain static during execution.</li>
+                <li><strong>8 Fixed Categories:</strong> The system models 8 specific somatic and behavioral parameters, rather than a clinical multi-hundred parameter diagnostic assessment.</li>
+                <li><strong>Equal Unit Weighting:</strong> Each fired rule contributes an equal score increment of <code>+1</code> to its associated Dosha.</li>
+                <li><strong>No Dual-Prakriti Representation:</strong> While traditional Ayurveda recognizes bi-doshic (Dwandwaja) Prakriti (e.g. Vata-Pitta), this collegiate project models primary single-dosha dominance for algorithmic clarity.</li>
+                <li><strong>Absence of Black-Box ML:</strong> The system intentionally avoids machine learning, neural networks, or generative AI to preserve deterministic explainability.</li>
+            </ul>
+        </div>
+
+        <!-- Strict Non-Medical Disclaimer -->
+        <div class="p-6 rounded-2xl bg-[#F0ECE1] border border-[#DDD5C5]">
+            <h3 class="font-serif text-lg font-bold text-[#1E2D24] mb-2">Strict Educational & Medical Disclaimer</h3>
+            <p class="text-xs text-[#59554F] leading-relaxed">
+                This software application is designed solely as an educational and academic demonstration of an Indian Knowledge Systems (IKS) concept implemented via a Computer Science Rule-Based Expert System. It does not provide medical advice, diagnosis, treatment, medicine recommendations, or dietary prescriptions. It must not be used as a substitute for professional healthcare or certified Ayurvedic consultation.
+            </p>
+        </div>
+
+    </div>
+</section>
+{% endblock %}

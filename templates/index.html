@@ -1,0 +1,349 @@
+{% extends "base.html" %}
+
+{% block title %}Prakriti Expert System | Ayurvedic Classification as a Rule-Based Expert System{% endblock %}
+
+{% block content %}
+<!-- HERO SECTION -->
+<section class="relative overflow-hidden pt-12 pb-20 md:pt-20 md:pb-28 border-b border-[#EAE4D9]">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            <!-- Left Hero Content -->
+            <div class="lg:col-span-7">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#EDE7DA] border border-[#DDD5C5] text-xs font-semibold text-[#5A5650] mb-6">
+                    <span class="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span>
+                    Indian Knowledge Systems (IKS) × Computer Science
+                </div>
+
+                <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#1E2D24] leading-[1.15] mb-6">
+                    Discover Your Prakriti Through <span class="italic font-normal text-[#C88A2E]">Rules</span> of Ayurveda
+                </h1>
+
+                <p class="text-base sm:text-lg text-[#55524C] leading-relaxed mb-8 max-w-xl">
+                    Explore the traditional concept of Prakriti through an interactive rule-based expert system that connects classical Ayurvedic characteristics with deterministic IF-THEN computational inference.
+                </p>
+
+                <div class="flex flex-wrap items-center gap-4">
+                    <a href="{{ url_for('assessment') }}" class="inline-flex items-center justify-center px-6 py-3.5 text-base font-semibold rounded-xl bg-[#1E2D24] text-[#FAF8F5] hover:bg-[#2C3E33] transition-all shadow-md hover:shadow-lg">
+                        Start Assessment →
+                    </a>
+                    <a href="{{ url_for('how_it_works') }}" class="inline-flex items-center justify-center px-6 py-3.5 text-base font-semibold rounded-xl bg-[#EDE7DA] text-[#3A3732] hover:bg-[#E2D9C8] transition-colors border border-[#DDD4C3]">
+                        How the Engine Works
+                    </a>
+                </div>
+
+                <!-- Academic Pillars Micro-List -->
+                <div class="mt-10 pt-8 border-t border-[#E8E1D2] grid grid-cols-3 gap-4 text-center sm:text-left">
+                    <div>
+                        <div class="font-serif text-2xl font-bold text-[#1E2D24]">8</div>
+                        <div class="text-xs text-[#736F68] font-medium">Input Facts Evaluated</div>
+                    </div>
+                    <div>
+                        <div class="font-serif text-2xl font-bold text-[#1E2D24]">100%</div>
+                        <div class="text-xs text-[#736F68] font-medium">Deterministic Rules</div>
+                    </div>
+                    <div>
+                        <div class="font-serif text-2xl font-bold text-[#1E2D24]">O(n)</div>
+                        <div class="text-xs text-[#736F68] font-medium">Linear Complexity</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Hero Visual: Architectural Pipeline -->
+            <div class="lg:col-span-5">
+                <div class="bg-[#FAF8F5] p-6 sm:p-8 rounded-2xl border border-[#E2DDD2] shadow-xl relative">
+                    <div class="text-xs font-bold uppercase tracking-widest text-[#7D7870] mb-4 flex items-center justify-between">
+                        <span>Computational Pipeline</span>
+                        <span class="text-[10px] bg-[#EAE4D8] px-2 py-0.5 rounded text-[#4A4742]">Forward Chaining</span>
+                    </div>
+
+                    <!-- Pipeline Steps Visual -->
+                    <div class="space-y-3 relative">
+                        <!-- Step 1 -->
+                        <div class="p-3.5 rounded-xl bg-white border border-[#E5DFD4] shadow-sm flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <span class="w-6 h-6 rounded-md bg-[#EDE6D8] text-[#4A4742] text-xs font-bold flex items-center justify-center">1</span>
+                                <div>
+                                    <div class="text-xs font-semibold text-[#201F1E]">User Response (Q1–Q8)</div>
+                                    <div class="text-[10px] text-[#7A766F]">Characteristics selected by individual</div>
+                                </div>
+                            </div>
+                            <span class="text-[11px] font-mono font-medium text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">Facts</span>
+                        </div>
+
+                        <div class="text-center text-[#B0A99E] leading-none">↓</div>
+
+                        <!-- Step 2 -->
+                        <div class="p-3.5 rounded-xl bg-white border border-[#E5DFD4] shadow-sm flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <span class="w-6 h-6 rounded-md bg-[#EDE6D8] text-[#4A4742] text-xs font-bold flex items-center justify-center">2</span>
+                                <div>
+                                    <div class="text-xs font-semibold text-[#201F1E]">Knowledge Base (rules.py)</div>
+                                    <div class="text-[10px] text-[#7A766F]">Predefined classical Ayurvedic logic</div>
+                                </div>
+                            </div>
+                            <span class="text-[11px] font-mono font-medium text-amber-700 bg-amber-50 px-2 py-0.5 rounded">Rules</span>
+                        </div>
+
+                        <div class="text-center text-[#B0A99E] leading-none">↓</div>
+
+                        <!-- Step 3 -->
+                        <div class="p-3.5 rounded-xl bg-white border border-[#E5DFD4] shadow-sm flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <span class="w-6 h-6 rounded-md bg-[#EDE6D8] text-[#4A4742] text-xs font-bold flex items-center justify-center">3</span>
+                                <div>
+                                    <div class="text-xs font-semibold text-[#201F1E]">Inference Engine</div>
+                                    <div class="text-[10px] text-[#7A766F]">Rule matching & score accumulation</div>
+                                </div>
+                            </div>
+                            <span class="text-[11px] font-mono font-medium text-blue-700 bg-blue-50 px-2 py-0.5 rounded">Inference</span>
+                        </div>
+
+                        <div class="text-center text-[#B0A99E] leading-none">↓</div>
+
+                        <!-- Step 4 -->
+                        <div class="p-3.5 rounded-xl bg-[#1E2D24] text-[#FAF8F5] shadow-md flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <span class="w-6 h-6 rounded-md bg-[#2D4235] text-[#FAF8F5] text-xs font-bold flex items-center justify-center">4</span>
+                                <div>
+                                    <div class="text-xs font-semibold text-white">Dominant Prakriti Classification</div>
+                                    <div class="text-[10px] text-[#C2BCB1]">Vata · Pitta · Kapha (Max Score)</div>
+                                </div>
+                            </div>
+                            <span class="text-[11px] font-mono font-bold text-[#F4D396] bg-[#2E4236] px-2 py-0.5 rounded">Output</span>
+                        </div>
+                    </div>
+
+                    <div class="mt-4 pt-3 border-t border-[#EAE3D6] text-[11px] text-[#6E6A63] text-center italic">
+                        Deterministic production system. Zero black-box ML or neural approximation.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- SECTION: THE THREE DOSHAS -->
+<section id="doshas" class="py-20 bg-[#F4EFEA] border-b border-[#EAE4D9]">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="text-center max-w-2xl mx-auto mb-14">
+            <span class="text-xs font-bold uppercase tracking-widest text-[#7D7870]">Ayurvedic Foundations</span>
+            <h2 class="font-serif text-3xl sm:text-4xl font-bold text-[#1E2D24] mt-2 mb-4">
+                The Three Biological Energies (Tridosha)
+            </h2>
+            <p class="text-sm text-[#615D57] leading-relaxed">
+                In classical Ayurveda, Prakriti refers to an individual’s unique physiological and psychological constitution, determined by the relative predominance of three primary Doshas.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Vata Card -->
+            <div class="bg-white rounded-2xl p-7 border border-[#E3DDD1] shadow-sm hover:shadow-md transition-shadow relative overflow-hidden">
+                <div class="w-2 h-full bg-blue-500 absolute left-0 top-0"></div>
+                <div class="flex items-center justify-between mb-4">
+                    <span class="text-xs font-bold uppercase tracking-wider text-blue-700 bg-blue-50 px-2.5 py-1 rounded-md border border-blue-100">
+                        वात · Vata
+                    </span>
+                    <span class="text-xs text-[#7D7870] font-mono">Air + Ether</span>
+                </div>
+                <h3 class="font-serif text-2xl font-bold text-[#1E2D24] mb-2">The Principle of Movement</h3>
+                <p class="text-sm text-[#57534D] mb-4 leading-relaxed">
+                    Lightness, quickness, variability, and movement. Governs all biological circulation, breathing, motor impulses, and sensory perception.
+                </p>
+                <div class="text-xs font-medium text-[#7D7870] space-y-1.5 pt-4 border-t border-[#F0EBE1]">
+                    <div><strong class="text-[#201F1E]">Primary Qualities:</strong> Light, dry, cold, mobile, subtle</div>
+                    <div><strong class="text-[#201F1E]">In Expert System:</strong> Associated with slender frame, quick thoughts, irregular appetite</div>
+                </div>
+            </div>
+
+            <!-- Pitta Card -->
+            <div class="bg-white rounded-2xl p-7 border border-[#E3DDD1] shadow-sm hover:shadow-md transition-shadow relative overflow-hidden">
+                <div class="w-2 h-full bg-amber-500 absolute left-0 top-0"></div>
+                <div class="flex items-center justify-between mb-4">
+                    <span class="text-xs font-bold uppercase tracking-wider text-amber-700 bg-amber-50 px-2.5 py-1 rounded-md border border-amber-100">
+                        पित्त · Pitta
+                    </span>
+                    <span class="text-xs text-[#7D7870] font-mono">Fire + Water</span>
+                </div>
+                <h3 class="font-serif text-2xl font-bold text-[#1E2D24] mb-2">The Principle of Transformation</h3>
+                <p class="text-sm text-[#57534D] mb-4 leading-relaxed">
+                    Heat, intensity, focus, and transformation. Governs enzymatic digestion, thermoregulation, cellular metabolism, and sharp analytical intellect.
+                </p>
+                <div class="text-xs font-medium text-[#7D7870] space-y-1.5 pt-4 border-t border-[#F0EBE1]">
+                    <div><strong class="text-[#201F1E]">Primary Qualities:</strong> Hot, sharp, light, oily, spreading</div>
+                    <div><strong class="text-[#201F1E]">In Expert System:</strong> Associated with moderate build, strong appetite, sharp intellect</div>
+                </div>
+            </div>
+
+            <!-- Kapha Card -->
+            <div class="bg-white rounded-2xl p-7 border border-[#E3DDD1] shadow-sm hover:shadow-md transition-shadow relative overflow-hidden">
+                <div class="w-2 h-full bg-emerald-600 absolute left-0 top-0"></div>
+                <div class="flex items-center justify-between mb-4">
+                    <span class="text-xs font-bold uppercase tracking-wider text-emerald-800 bg-emerald-50 px-2.5 py-1 rounded-md border border-emerald-100">
+                        कफ · Kapha
+                    </span>
+                    <span class="text-xs text-[#7D7870] font-mono">Earth + Water</span>
+                </div>
+                <h3 class="font-serif text-2xl font-bold text-[#1E2D24] mb-2">The Principle of Stability</h3>
+                <p class="text-sm text-[#57534D] mb-4 leading-relaxed">
+                    Stability, heaviness, calmness, and steadiness. Provides musculoskeletal structure, cellular cohesion, lubrication, immunity, and endurance.
+                </p>
+                <div class="text-xs font-medium text-[#7D7870] space-y-1.5 pt-4 border-t border-[#F0EBE1]">
+                    <div><strong class="text-[#201F1E]">Primary Qualities:</strong> Heavy, slow, steady, solid, cold, soft</div>
+                    <div><strong class="text-[#201F1E]">In Expert System:</strong> Associated with broad frame, calm temper, deep enduring memory</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SECTION: HOW THE SYSTEM THINKS -->
+<section class="py-20 bg-[#FAF8F5] border-b border-[#EAE4D9]">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="text-center max-w-2xl mx-auto mb-14">
+            <span class="text-xs font-bold uppercase tracking-widest text-[#7D7870]">Rule-Based Reasoning</span>
+            <h2 class="font-serif text-3xl sm:text-4xl font-bold text-[#1E2D24] mt-2 mb-4">
+                How the Expert System Thinks
+            </h2>
+            <p class="text-sm text-[#615D57] leading-relaxed">
+                Expert systems emulate human decision-making by applying formal logical rules over asserted facts. Here is the step-by-step cycle for every question.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-6 gap-4 text-center">
+            <div class="p-4 rounded-xl bg-white border border-[#E5DFD4] shadow-sm">
+                <div class="text-xs font-mono font-bold text-amber-600 mb-1">01</div>
+                <div class="font-serif font-bold text-sm text-[#1E2D24] mb-1">Your Answer</div>
+                <div class="text-[11px] text-[#736F68]">User selects an option</div>
+            </div>
+            <div class="p-4 rounded-xl bg-white border border-[#E5DFD4] shadow-sm">
+                <div class="text-xs font-mono font-bold text-blue-600 mb-1">02</div>
+                <div class="font-serif font-bold text-sm text-[#1E2D24] mb-1">Input Fact</div>
+                <div class="text-[11px] text-[#736F68]">Fact placed in memory</div>
+            </div>
+            <div class="p-4 rounded-xl bg-white border border-[#E5DFD4] shadow-sm">
+                <div class="text-xs font-mono font-bold text-indigo-600 mb-1">03</div>
+                <div class="font-serif font-bold text-sm text-[#1E2D24] mb-1">Rule Match</div>
+                <div class="text-[11px] text-[#736F68]">Matched in rules.py</div>
+            </div>
+            <div class="p-4 rounded-xl bg-white border border-[#E5DFD4] shadow-sm">
+                <div class="text-xs font-mono font-bold text-emerald-600 mb-1">04</div>
+                <div class="font-serif font-bold text-sm text-[#1E2D24] mb-1">Score Update</div>
+                <div class="text-[11px] text-[#736F68]">+1 to matched Dosha</div>
+            </div>
+            <div class="p-4 rounded-xl bg-white border border-[#E5DFD4] shadow-sm">
+                <div class="text-xs font-mono font-bold text-purple-600 mb-1">05</div>
+                <div class="font-serif font-bold text-sm text-[#1E2D24] mb-1">Inference</div>
+                <div class="text-[11px] text-[#736F68]">Compares all scores</div>
+            </div>
+            <div class="p-4 rounded-xl bg-[#1E2D24] text-white border border-[#2E4235] shadow-sm">
+                <div class="text-xs font-mono font-bold text-[#F4D396] mb-1">06</div>
+                <div class="font-serif font-bold text-sm text-[#FAF8F5] mb-1">Result & Trace</div>
+                <div class="text-[11px] text-[#C2BCB1]">Dominant Dosha + reasons</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SECTION: IKS x COMPUTER SCIENCE COMPARISON -->
+<section class="py-20 bg-[#F4EFEA] border-b border-[#EAE4D9]">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-12">
+            <span class="text-xs font-bold uppercase tracking-widest text-[#7D7870]">Academic Synthesis</span>
+            <h2 class="font-serif text-3xl sm:text-4xl font-bold text-[#1E2D24] mt-2 mb-4">
+                Ayurveda × Computer Science Concept Mapping
+            </h2>
+            <p class="text-sm text-[#615D57]">
+                Demonstrating how classical Indian Knowledge Systems map directly to standard Expert System concepts in Artificial Intelligence.
+            </p>
+        </div>
+
+        <div class="bg-white rounded-2xl border border-[#E2DDD2] shadow-sm overflow-hidden">
+            <div class="grid grid-cols-2 bg-[#EDE7DA] text-xs font-bold uppercase tracking-wider text-[#47443E] py-3.5 px-6 border-b border-[#DED7C9]">
+                <div>Ayurveda / IKS Domain</div>
+                <div>Computer Science Equivalent</div>
+            </div>
+            <div class="divide-y divide-[#EAE4D9] text-sm">
+                <div class="grid grid-cols-2 py-3 px-6 hover:bg-[#FAF8F5] transition-colors">
+                    <span class="font-medium text-[#1E2D24]">Ayurveda</span>
+                    <span class="text-[#55524C] font-mono text-xs">Knowledge Domain</span>
+                </div>
+                <div class="grid grid-cols-2 py-3 px-6 hover:bg-[#FAF8F5] transition-colors">
+                    <span class="font-medium text-[#1E2D24]">Prakriti Assessment</span>
+                    <span class="text-[#55524C] font-mono text-xs">Input Collection</span>
+                </div>
+                <div class="grid grid-cols-2 py-3 px-6 hover:bg-[#FAF8F5] transition-colors">
+                    <span class="font-medium text-[#1E2D24]">Ayurvedic Characteristics (Lakshana)</span>
+                    <span class="text-[#55524C] font-mono text-xs">Facts / Working Memory</span>
+                </div>
+                <div class="grid grid-cols-2 py-3 px-6 hover:bg-[#FAF8F5] transition-colors">
+                    <span class="font-medium text-[#1E2D24]">Ayurvedic Classical Principles</span>
+                    <span class="text-[#55524C] font-mono text-xs">Knowledge Base</span>
+                </div>
+                <div class="grid grid-cols-2 py-3 px-6 hover:bg-[#FAF8F5] transition-colors">
+                    <span class="font-medium text-[#1E2D24]">Diagnostic Classification Rules</span>
+                    <span class="text-[#55524C] font-mono text-xs">IF-THEN Production Rules</span>
+                </div>
+                <div class="grid grid-cols-2 py-3 px-6 hover:bg-[#FAF8F5] transition-colors">
+                    <span class="font-medium text-[#1E2D24]">Characteristic Interpretation</span>
+                    <span class="text-[#55524C] font-mono text-xs">Rule Evaluation & Firing</span>
+                </div>
+                <div class="grid grid-cols-2 py-3 px-6 hover:bg-[#FAF8F5] transition-colors">
+                    <span class="font-medium text-[#1E2D24]">Vata / Pitta / Kapha</span>
+                    <span class="text-[#55524C] font-mono text-xs">Classification Categories</span>
+                </div>
+                <div class="grid grid-cols-2 py-3 px-6 hover:bg-[#FAF8F5] transition-colors">
+                    <span class="font-medium text-[#1E2D24]">Prakriti Analysis Process</span>
+                    <span class="text-[#55524C] font-mono text-xs">Inference Engine Process</span>
+                </div>
+                <div class="grid grid-cols-2 py-3 px-6 hover:bg-[#FAF8F5] transition-colors">
+                    <span class="font-medium text-[#1E2D24]">Dominant Dosha</span>
+                    <span class="text-[#55524C] font-mono text-xs">Classification Output</span>
+                </div>
+                <div class="grid grid-cols-2 py-3 px-6 hover:bg-[#FAF8F5] transition-colors">
+                    <span class="font-medium text-[#1E2D24]">Ayurvedic Rationale</span>
+                    <span class="text-[#55524C] font-mono text-xs">Explainable Reasoning Trace</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SECTION: WHY THIS PROJECT -->
+<section class="py-20 bg-[#FAF8F5] border-b border-[#EAE4D9]">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+        <div class="bg-[#F0ECE1] rounded-2xl p-8 sm:p-10 border border-[#E2DBD0]">
+            <h2 class="font-serif text-2xl sm:text-3xl font-bold text-[#1E2D24] mb-4">
+                Why Build an Ayurvedic Expert System?
+            </h2>
+            <div class="space-y-4 text-sm text-[#54514B] leading-relaxed">
+                <p>
+                    Traditional Indian Knowledge Systems contain centuries of systematic observational taxonomies. In Ayurveda, individual constitutional classification (Prakriti) is codified through distinct somatic, metabolic, and behavioral markers.
+                </p>
+                <p>
+                    In classic Computer Science, a <strong>Rule-Based Expert System</strong> is one of the foundational paradigms of Artificial Intelligence. It models problem-solving using an explicit knowledge base of IF-THEN rules rather than statistical probabilities or opaque neural weights.
+                </p>
+                <p>
+                    By formalizing Ayurvedic principles into executable production rules, this collegiate project demonstrates that traditional knowledge can be systematically formalized, tested, and made completely explainable through computation.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FINAL CALL TO ACTION -->
+<section class="py-20 bg-[#1E2D24] text-[#FAF8F5]">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+        <h2 class="font-serif text-3xl sm:text-4xl font-bold mb-4">
+            Ready to Explore Your Prakriti?
+        </h2>
+        <p class="text-base text-[#C5BFB5] max-w-xl mx-auto mb-8">
+            Complete the 8-question assessment to observe how forward-chaining rules evaluate each characteristic and determine your dominant Dosha.
+        </p>
+        <a href="{{ url_for('assessment') }}" class="inline-flex items-center justify-center px-8 py-4 text-base font-semibold rounded-xl bg-[#E8DCC4] text-[#1E2D24] hover:bg-[#F2E8D5] transition-all shadow-lg font-sans">
+            Begin Assessment →
+        </a>
+    </div>
+</section>
+{% endblock %}
