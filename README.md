@@ -144,3 +144,5 @@ python3 -m unittest tests/test_expert_engine.py
 ## ⚠️ Non-Medical Academic Disclaimer
 
 This software application is developed strictly for **academic and educational demonstration purposes** within an Indian Knowledge Systems (IKS) and Computer Science collegiate curriculum. **It does not provide medical advice, diagnosis, treatment, or medicinal prescriptions.** For clinical health assessments or therapeutic treatments, always consult a certified Ayurvedic practitioner or qualified physician.
+#   i k s - p r o j e c t  
+ 
